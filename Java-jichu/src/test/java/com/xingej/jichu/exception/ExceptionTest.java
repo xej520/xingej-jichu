@@ -28,4 +28,26 @@ public class ExceptionTest {
         }
     }
 
+    // 目的是 测试 ：在循环中，如果有一次出现异常了，程序是否还继续循环
+    @Test
+    public void testIsContinue2() {
+        for (int i = 10; i > 0; i--) {
+
+            try {
+                System.out.printf("%d / %d = %d\t", i, (i - 4), i / (i - 4));
+            } catch (Exception e) {
+                // 捕获异常
+                // 并抛出异常的话，程序，继续往下执行的
+                System.out.println("\n-------出问题-----------");
+                throw new RuntimeException();
+
+                // 程序，不会往下执行了，因此下面的打印语句无法执行的
+
+                // System.out.println("\n-------出问题-----------");
+
+            }
+
+        }
+    }
+
 }
