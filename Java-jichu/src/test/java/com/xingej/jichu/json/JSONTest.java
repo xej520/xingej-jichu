@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
 public class JSONTest {
@@ -43,6 +44,25 @@ public class JSONTest {
         wangxiaoer.put("car", null);
 
         System.out.println("====>:\t" + new JSONObject(wangxiaoer).toString());
+
+    }
+
+    // 使用Bean方式，来构造JSONObject
+    // -----建议使用 Bean的方式来构建JSONObject
+    @Test
+    public void testByBean() {
+
+        WangXiaoEr wangXiaoEr = new WangXiaoEr();
+
+        wangXiaoEr.setAge(19);
+        wangXiaoEr.setBirthday(new Date());
+        wangXiaoEr.setCar(new Car("bwm", "Benz"));
+        wangXiaoEr.setHas_girlfriend(true);
+        wangXiaoEr.setMajors(new String[] { "理发", "挖掘机" });
+        wangXiaoEr.setSchool("bjtu");
+
+        System.out.println("====>:\t" + JSONObject.parseObject(JSON.toJSONString(wangXiaoEr)).toString());
+        System.out.println("====>:\t" + JSON.toJSONString(wangXiaoEr));
 
     }
 
