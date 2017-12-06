@@ -10,8 +10,13 @@ package com.xingej.jichu.enum2;
 public enum ExpressionEnum {
     // dot，separator。。。。。就是当前枚举类ExpressionEnum的实例对象名称
     // ".","/" 是传入的参数
-    dot("."), separator("/"), dollar("$"), openBracket("["), closeBracket("]"), equal("="), comma(",");
+    dot("."), separator("/"), dollar("$"), openBracket("["), closeBracket("]"), equal("="), comma(",")
 
+    // xml 这个是文件名后缀
+    , xml("xml")
+
+    // 这个是前缀
+    , xmlFilePre("/cn/javass/xgenconfxml");
     private String expr;
 
     private ExpressionEnum(String expr) {
