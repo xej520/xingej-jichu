@@ -8,5 +8,7 @@ public class ClassLoaderTest {
 
         System.out.println("----类加载的名字----:\t" + className);
 
+        System.out.println(new ClassAttachment().toString());
+
     }
 }
