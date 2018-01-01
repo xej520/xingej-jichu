@@ -49,5 +49,14 @@ public class ReflectTest {
         String string = (String) cls4.newInstance(new StringBuffer("我也不知道写啥"));
 
         System.out.println("--->:\t" + string.toString());
+    
+        //5、spring IOC
+        //代码不体现出你的要引用的类，我代码直接不报错，我通过
+        //外部xml配置方式或者properties属性文件
+        
+        
+        
+        
+        
     }
 }
