@@ -1,5 +1,7 @@
 package com.dongnao.reflect;
 
+import java.lang.reflect.Constructor;
+
 /**
  * 反射测试
  * 
@@ -42,6 +44,10 @@ public class ReflectTest {
         Class stringType = String.class;
         System.out.println("--->:\t" + stringType.isPrimitive());// false
                                                                  // ,说明String不是基本类型哦
+        // 4、拿到String 构造方法的模板
+        Constructor<?> cls4 = Class.forName("java.lang.String").getConstructor(StringBuffer.class);
+        String string = (String) cls4.newInstance(new StringBuffer("我也不知道写啥"));
 
+        System.out.println("--->:\t" + string.toString());
     }
 }
