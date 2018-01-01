@@ -17,5 +17,22 @@ public class ReflectTest {
         // 3、Class.forName("") 写全
         Class clazz3 = Class.forName("java.lang.String");
 
+        // 1、面试题？Class.forName是如何加载的？
+        // 加载这个类的时候，这份字节码已经加载java虚拟机的内存缓存中了
+        // 直接返回这个类的字节码，
+        // 如果这份字节码没有加载到jvm缓存中的话，那么，此刻，会调用类加载器
+        // 去加载这个java类，返回字节码
+        // 因此，如果forName没有在jvm中的内存缓存中，没有找到字节码的话
+        // 会通过classLoader进行加载
+
+        // 2、面试题？clazz1, clazz2, clazz3是否同一份呢呢？
+        // 是啊
+        //
+        System.out.println("--->:\t" + (clazz1 == clazz2));// true
+        System.out.println("--->:\t" + (clazz2 == clazz3));// true
+        System.out.println("--->:\t" + (clazz1 == clazz2));// true
+
+        System.out.println("--->:\t" + (Integer.class == int.class)); // false
+        System.out.println("--->:\t" + (Integer.TYPE == int.class)); // true
     }
 }
