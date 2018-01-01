@@ -34,5 +34,14 @@ public class ReflectTest {
 
         System.out.println("--->:\t" + (Integer.class == int.class)); // false
         System.out.println("--->:\t" + (Integer.TYPE == int.class)); // true
+
+        // 3、判断是否是基本类型
+        Class intType = int.class;
+        System.out.println("--->:\t" + intType.isPrimitive());// true
+
+        Class stringType = String.class;
+        System.out.println("--->:\t" + stringType.isPrimitive());// false
+                                                                 // ,说明String不是基本类型哦
+
     }
 }
