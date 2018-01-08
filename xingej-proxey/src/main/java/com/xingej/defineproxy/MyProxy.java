@@ -49,8 +49,8 @@ public class MyProxy {
                 + "this.h = h;" + rt + "}" + rt + getMethodString(methods, interf) + rt + "};";
 
         // 将我们构造的自定义代理类，转换成文件
-        String filePath = "E:\\Project\\xingej\\xingej-jichu\\xingej-proxey\\src\\main\\java\\com\\xingej\\defineproxy";
-        String fileName = filePath + "\\$Proxy4.java";
+        String filePath = "E:\\Project\\xingej\\xingej-jichu\\xingej-proxey\\src\\main\\java\\com\\xingej\\defineproxy\\";
+        String fileName = filePath + "$Proxy4.java";
 
         File file = new File(fileName);
 
