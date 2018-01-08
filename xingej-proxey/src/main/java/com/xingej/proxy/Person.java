@@ -10,9 +10,9 @@ package com.xingej.proxy;
 public interface Person {
     // 下面三个方法是，规范目标类的行为
     
-    void eat() throws Exception;
+    void eat() throws Throwable;
     
-    void sleep() throws Exception;
+    void sleep() throws Throwable;
     
-    void hit() throws Exception;
+    void hit() throws Throwable;
 }

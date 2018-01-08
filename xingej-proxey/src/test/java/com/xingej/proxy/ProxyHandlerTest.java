@@ -13,7 +13,7 @@ import sun.misc.ProxyGenerator;
 public class ProxyHandlerTest {
     
     @Test
-    public void test() throws Exception{
+    public void test() throws Throwable{
         //创建一个被代理对象
         Person person = new ZhangSan();
         
@@ -35,7 +35,7 @@ public class ProxyHandlerTest {
     }
     
     @Test
-    public void test2() throws Exception{
+    public void test2() throws Throwable{
         //创建一个被代理对象
 
         String className = PropertiesUtil.getValue("className");
@@ -60,7 +60,7 @@ public class ProxyHandlerTest {
     
     //获取，运行时期，产生的代理对象，并保存到指定的目录
     @Test
-    public void test3() throws Exception{
+    public void test3() throws Throwable{
         //创建一个被代理对象
         Person person = new ZhangSan();
         
