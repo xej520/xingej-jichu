@@ -19,8 +19,12 @@ import javax.tools.ToolProvider;
  * @author erjun 2018年1月4日 下午4:31:24
  */
 public class MyProxy {
+
+    // 执行器
     protected MyInvocationHandler h;
 
+    private static String proxyName = "$Proxy4";
+    
     // 定义一个回车键
     static String rt = "\r\t";
 
@@ -32,7 +36,7 @@ public class MyProxy {
     }
 
     // 创建一个内存当中的$Proxy4实例
-    public static Object createProxyInstance(ClassLoader loader, Class interf, MyInvocationHandler h) throws Exception {
+    public static Object createProxyInstance(ClassLoader loader, Class<?> interf, MyInvocationHandler h) throws Exception {
 
         // 进行校验
         Objects.requireNonNull(h);
@@ -44,13 +48,13 @@ public class MyProxy {
 
         // 要将这个对象，构建到com.xingej.defineproxy;这个包里
         String proxyClassString = "package com.xingej.defineproxy;" + rt + "import java.lang.reflect.Method;" + rt
-                + "public class $Proxy4 implements " + interf.getName() // 得到是Person
-                + "{" + rt + "MyInvocationHandler h;" + rt + "public $Proxy4(MyInvocationHandler h) {" + rt
+                + "public class " + proxyName +" implements " + interf.getName() // 得到是Person
+                + "{" + rt + "MyInvocationHandler h;" + rt + "public "+ proxyName +"(MyInvocationHandler h) {" + rt
                 + "this.h = h;" + rt + "}" + rt + getMethodString(methods, interf) + rt + "};";
 
         // 将我们构造的自定义代理类，转换成文件
         String filePath = "E:\\Project\\xingej\\xingej-jichu\\xingej-proxey\\src\\main\\java\\com\\xingej\\defineproxy\\";
-        String fileName = filePath + "$Proxy4.java";
+        String fileName = filePath + proxyName + ".java";
 
         File file = new File(fileName);
 
@@ -62,7 +66,7 @@ public class MyProxy {
 
         fw.close();
 
-        // 开始编译Proxy0.java文件
+        // 开始编译Proxy4.java文件
         // 获取系统编译器
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
@@ -82,13 +86,13 @@ public class MyProxy {
         // 通过自定义的类加载器，进行加载
         MyClassLoader loader2 = new MyClassLoader(filePath);
 
-        Class<?> proxy0Class = loader2.findClass("$Proxy4");
+        Class<?> proxy0Class = loader2.findClass(proxyName);
         
         // 将.class文件加载到内存后，删除.class文件
         // 这样，内存里，即没有.java和.class文件
         
         // 就跟JDK动态代理方式一样了
-        File clazzFile = new File(filePath + "$Proxy4" + ".class");
+        File clazzFile = new File(filePath + proxyName + ".class");
 
         if (clazzFile.exists()) {
             clazzFile.delete();
@@ -102,7 +106,7 @@ public class MyProxy {
     }
 
     // 实现的方法
-    private static String getMethodString(Method[] methods, Class interf) {
+    private static String getMethodString(Method[] methods, Class<?> interf) {
         String proxyMe = "";
 
         for (Method method : methods) {

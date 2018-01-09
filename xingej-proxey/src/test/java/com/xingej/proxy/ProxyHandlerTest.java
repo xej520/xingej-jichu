@@ -51,7 +51,7 @@ public class ProxyHandlerTest {
         Person proxy = (Person) Proxy.newProxyInstance(Person.class.getClassLoader(), new Class[]{Person.class}, 
                 new ProxyHandler(person));
         
-        //说明，proxy是代理对象，代理person
+        // 说明，proxy是代理对象，代理person
         // 或者你可以这么认为
         // person是演员，而proxy是经纪人
        
