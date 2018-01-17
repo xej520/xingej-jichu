@@ -40,8 +40,10 @@ public class Resource {
         hasGoods = true; //表示有商品了
         
         //通知消费线程，来消费
+        //方案一
 //        notify(); //通知其他线程
         
+      //方案二
         //JDK1.4之前的解决办法，使用notifyAll();
         //将全部线程唤醒
         //notify() 唤醒一个线程
