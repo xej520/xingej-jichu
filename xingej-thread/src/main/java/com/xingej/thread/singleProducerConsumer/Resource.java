@@ -25,6 +25,12 @@ public class Resource {
             }
         }
         
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         this.name = name + "_" + id;
         id++;
         
@@ -48,7 +54,7 @@ public class Resource {
             }
         }
         
-        System.out.println("---生产线程名称---:\t" + Thread.currentThread().getName() + ", 以生产商品为:" + this.name);
+        System.out.println("---消费线程名称---:\t" + Thread.currentThread().getName() + ", 已经消费商品为:" + this.name);
         
         //设置为无商品标志
         hasGoods = false; 
