@@ -40,7 +40,13 @@ public class Resource {
         hasGoods = true; //表示有商品了
         
         //通知消费线程，来消费
-        notify(); //通知其他线程
+//        notify(); //通知其他线程
+        
+        //JDK1.4之前的解决办法，使用notifyAll();
+        //将全部线程唤醒
+        //notify() 唤醒一个线程
+        //唤醒对面的消费线程
+        notifyAll();
     }
     
     
@@ -62,7 +68,9 @@ public class Resource {
         hasGoods = false; 
         
         //通知消费线程，来消费
-        notify(); //通知生产者来生产产品
+//        notify(); //通知生产者来生产产品
+        //唤醒对面的生产线程
+        notifyAll();
     }
     
 }
