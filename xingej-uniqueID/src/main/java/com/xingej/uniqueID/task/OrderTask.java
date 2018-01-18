@@ -29,14 +29,14 @@ public class OrderTask implements Runnable{
 
         try {
             //来获取锁的
-            interProcessMutex.acquire();
+//            interProcessMutex.acquire();
             
             System.out.println(Thread.currentThread().getName() + "  订单号:\t" + orderServer.getOrderNo());
             
             latch.countDown(); 
             
             //释放锁资源
-            interProcessMutex.release();
+//            interProcessMutex.release();
         } catch (Exception e) {
             e.printStackTrace();
         }
