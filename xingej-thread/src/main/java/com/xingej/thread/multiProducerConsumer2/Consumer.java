@@ -9,9 +9,9 @@ package com.xingej.thread.multiProducerConsumer2;
  */
 public class Consumer implements Runnable{
     //持有对方的引用
-    private Resource resource;
+    private Resource2 resource;
     
-    public Consumer(Resource resource) {
+    public Consumer(Resource2 resource) {
         this.resource = resource;
     }
     
