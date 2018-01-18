@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author erjun
  * 2018年1月18日 下午2:16:50
  */
-public class OrderAtomicServerImpl implements OrderServer{
+public class OrderLockServiceImpl implements OrderServer{
 
-    static AtomicInteger atomicInteger = new AtomicInteger();
+    private static int num;
     
-    public String getOrderNo() {
+    synchronized public String getOrderNo() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("YYYYmmDDHHMMSS");
-        return simpleDateFormat.format(new Date()) + atomicInteger.incrementAndGet();
+        return simpleDateFormat.format(new Date()) + num++;
     }
     
 }

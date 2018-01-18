@@ -1,4 +1,4 @@
-package com.xingej.uniqueID.atomic;
+package com.xingej.uniqueID.lock;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -6,18 +6,18 @@ import java.util.concurrent.Executors;
 
 import com.xingej.uniqueID.task.OrderTask;
 import com.xingej.uniqueID.util.OrderAtomicServiceImpl;
+import com.xingej.uniqueID.util.OrderLockServiceImpl;
 import com.xingej.uniqueID.util.OrderServer;
-//JVM单进程内，形成的唯一号
 
-//非分布式方式
-public class JvmAtomicOrder {
-    public static void main(String[] args) {
+public class JvmLockOrder {
+    
+  public static void main(String[] args) {
         
         ExecutorService executorService = Executors.newCachedThreadPool();
         
         final CountDownLatch latch = new CountDownLatch(10);
         
-        OrderServer orderServer = new OrderAtomicServiceImpl();
+        OrderServer orderServer = new OrderLockServiceImpl();
         
         for(int i = 0; i < 10; i++){
             executorService.submit(new OrderTask(latch, orderServer));
@@ -33,4 +33,5 @@ public class JvmAtomicOrder {
         
         
     }
+    
 }
