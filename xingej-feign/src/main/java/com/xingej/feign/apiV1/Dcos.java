@@ -18,4 +18,7 @@ import feign.RequestLine;
 public abstract interface Dcos {
     @RequestLine("GET /login?username={username}&password={password}")
     public abstract JSONObject login(@Param("username") String username, @Param("password") String password);
+
+    @RequestLine("GET /show")
+    public abstract JSONObject show();
 }

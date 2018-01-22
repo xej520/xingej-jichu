@@ -3,12 +3,20 @@ package com.xingej.test.service;
 import com.alibaba.fastjson.JSONObject;
 import com.xingej.feign.apiV1.Dcos;
 import com.xingej.feign.apiV1.DcosClient;
+import com.xingej.test.common.Config;
 
 public class LoginServiceImpl {
     
     public void login(){
         
-        Dcos dcos = DcosClient.getInstance("http://localhost:8080");
+        if (null == Config.ENDPOINT) {
+            
+            System.out.println("================");
+            
+            return ;
+        }
+        
+        Dcos dcos = DcosClient.getInstance(Config.ENDPOINT);
         
         if (null == dcos) {
             return ;
